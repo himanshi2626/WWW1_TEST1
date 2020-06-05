@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.JavascriptExecutor;
 
 import SetupClass.Set;
 import cucumber.api.java.en.Given;
@@ -17,6 +18,7 @@ import cucumber.api.java.en.Then;
 public class sign_up extends Set{
 	
 	WebDriverWait wait = new WebDriverWait(driver,50);
+	JavascriptExecutor js = (JavascriptExecutor) driver;
 
 	@Given("^Open the Website URL su\\.$")
 	public void open_the_Website_URL_su() throws Throwable {
@@ -141,6 +143,7 @@ public class sign_up extends Set{
 		
 
 		WebElement download_new = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@type='submit'][contains(.,'Download this presentation')]")));
+		js.executeScript("arguments[0].scrollIntoView();",download_new);
 		Thread.sleep(4000);
 	    download_new.click();
 		Thread.sleep(8000);
